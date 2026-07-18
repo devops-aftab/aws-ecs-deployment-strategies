@@ -29,7 +29,7 @@ The project is divided into two distinct execution strategies, allowing you to c
 
 ---
 
-## 🛠️ General Prerequisites
+## General Prerequisites
 
 To run any of the deployment blueprints in this repository, you will need:
 * **Terraform** (`>= 1.0.0`) installed locally.

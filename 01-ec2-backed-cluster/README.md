@@ -49,3 +49,6 @@ The EC2 launch configuration utilizes a `name_prefix` and a `create_before_destr
 1. **Initialize the workspace**
    ```bash
    terraform init
+   terraform plan
+   terraform apply
+   
