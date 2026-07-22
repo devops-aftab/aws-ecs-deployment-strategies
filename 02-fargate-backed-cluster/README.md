@@ -4,6 +4,8 @@ This component of the portfolio demonstrates how to deploy a containerized web a
 
 ##  Architectural Overview
 
+![Fargate Architecture](../images/Infra%20Diagrams/fargate-ecs-architecture.png)
+
 The infrastructure is built entirely from scratch using Terraform and consists of the following components:
 
 *   **Networking:** A dedicated VPC with an Internet Gateway and 2 Public Subnets distributed across two Availability Zones for high availability.
@@ -18,9 +20,9 @@ The infrastructure is built entirely from scratch using Terraform and consists o
 
 When transitioning a workload from EC2-backed ECS to Fargate, the structural approach changes significantly:
 
-1.  **Zero Server Management:** The `aws_launch_template`, `aws_autoscaling_group`, and shell bootstrap scripts (`userdata.sh`) are entirely eliminated[cite: 1, 5]. AWS manages the underlying compute infrastructure.
-2.  **IP-Based Target Groups:** Instead of mapping the ALB to an instance ID using dynamic host ports, Fargate uses the native `awsvpc` network mode[cite: 1]. Each container task gets its own dedicated Elastic Network Interface (ENI) and private IP within the VPC, meaning the ALB targets tasks directly by **IP address**[cite: 1].
-3.  **Task-Level Resource Caps:** In an EC2 cluster, CPU and memory limits are optionally declared per container inside the task definition[cite: 1]. In Fargate, explicit hardware constraints (e.g., 256 CPU units, 512MB RAM) must be defined at the parent **Task level** for billing and scheduling allocation[cite: 1].
+1.  **Zero Server Management:** The `aws_launch_template`, `aws_autoscaling_group`, and shell bootstrap scripts (`userdata.sh`) are entirely eliminated. AWS manages the underlying compute infrastructure.
+2.  **IP-Based Target Groups:** Instead of mapping the ALB to an instance ID using dynamic host ports, Fargate uses the native `awsvpc` network mode. Each container task gets its own dedicated Elastic Network Interface (ENI) and private IP within the VPC, meaning the ALB targets tasks directly by **IP address**.
+3.  **Task-Level Resource Caps:** In an EC2 cluster, CPU and memory limits are optionally declared per container inside the task definition. In Fargate, explicit hardware constraints (e.g., 256 CPU units, 512MB RAM) must be defined at the parent **Task level** for billing and scheduling allocation.
 4.  **Direct Image Pulling:** Because Fargate tasks attach directly to your subnets without a proxy host EC2 node, they require a path to the internet to pull public container images (like Nginx). In this public-subnet sandbox layout, `assign_public_ip = true` is enabled to allow the ECS agent to communicate with DockerHub.
 
 ---
@@ -49,6 +51,8 @@ Verified the cluster operates completely serverless (**0 EC2 instances**) with 2
 
 ### 3. Application Load Balancer Verification
 Tested traffic distribution across private Fargate tasks running across distinct subnets (`10.0.1.x` and `10.0.2.x`):
+
+![Request Flow](../images/Infra%20Diagrams/fargate_backed_request_flow.png)
 
 | Fargate Task 1 (Subnet A) | Fargate Task 2 (Subnet B) |
 | :---: | :---: |
