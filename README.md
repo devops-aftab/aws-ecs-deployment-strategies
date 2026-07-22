@@ -43,15 +43,15 @@ terraform init
 terraform plan
 terraform apply
 
-# AWS ECS Deployment Strategies: EC2-Backed vs. Fargate (Serverless)
+# AWS ECS Deployment Strategies Portfolio
 
-An Infrastructure as Code (IaC) repository comparing **EC2-Backed (IaaS)** and **Fargate (Serverless)** container deployment strategies on Amazon Elastic Container Service (ECS) using **Terraform**.
+Welcome to my AWS ECS (Elastic Container Service) reference architecture portfolio. This repository contains end-to-end, fully automated infrastructure configurations built with **Terraform** to demonstrate different production deployment methodologies on AWS.
 
-This project demonstrates production-ready network design, multi-AZ high availability, Application Load Balancers (ALB), and automated target group health tracking across both compute paradigms.
+This project contrasts **EC2-Backed (IaaS)** versus **Fargate (Serverless)** container deployment strategies, showcasing production-ready network design, multi-AZ high availability, Application Load Balancers (ALB), and automated target group health tracking.
 
 ---
 
-## Architectural Comparison Matrix
+## 📊 Architectural Comparison Matrix
 
 | Feature / Metric | Strategy 01: EC2-Backed Cluster | Strategy 02: Fargate (Serverless) Cluster |
 | :--- | :--- | :--- |
@@ -64,7 +64,7 @@ This project demonstrates production-ready network design, multi-AZ high availab
 
 ---
 
-## Repository Navigation
+## Repository Structure
 
 ```text
 aws-ecs-deployment-strategies/
@@ -75,4 +75,3 @@ aws-ecs-deployment-strategies/
     └── deployment-proofs/
         ├── 01-ec2-backed/
         └── 02-fargate-backed/
-```
