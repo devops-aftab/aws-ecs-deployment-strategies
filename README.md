@@ -42,3 +42,37 @@ cd 01-ec2-backed-cluster   # Or 02-fargate-backed-cluster
 terraform init
 terraform plan
 terraform apply
+
+# AWS ECS Deployment Strategies: EC2-Backed vs. Fargate (Serverless)
+
+An Infrastructure as Code (IaC) repository comparing **EC2-Backed (IaaS)** and **Fargate (Serverless)** container deployment strategies on Amazon Elastic Container Service (ECS) using **Terraform**.
+
+This project demonstrates production-ready network design, multi-AZ high availability, Application Load Balancers (ALB), and automated target group health tracking across both compute paradigms.
+
+---
+
+## Architectural Comparison Matrix
+
+| Feature / Metric | Strategy 01: EC2-Backed Cluster | Strategy 02: Fargate (Serverless) Cluster |
+| :--- | :--- | :--- |
+| **Compute Management** | Manual EC2 Instance & Auto Scaling Group management | Fully managed by AWS (Serverless) |
+| **Infrastructure Overhead**| High (OS patching, AMI updates, capacity planning) | Zero (AWS handles host maintenance) |
+| **Scaling & Boot Time** | Slower (requires launching EC2 instances first) | Fast (provisions container tasks directly) |
+| **Cost Model** | Pay for running EC2 instances (regardless of task load) | Pay strictly per vCPU and Memory consumed per second |
+| **Isolation & Security** | Shared EC2 host kernel across containers | Hypervisor-level boundary per task |
+| **Ideal Use Case** | Predictable workloads, custom EC2 requirements, cost optimization at scale | Variable workloads, rapid scaling, microservices, minimal ops |
+
+---
+
+## Repository Navigation
+
+```text
+aws-ecs-deployment-strategies/
+├── 01-ec2-backed-cluster/        # IaC for ECS on EC2 (ASG, Capacity Providers, Launch Templates)
+├── 02-fargate-backed-cluster/    # IaC for ECS on Fargate (Serverless execution, Task Definitions)
+└── images/                       # Architectural diagrams & deployment verification proofs
+    ├── infra-diagrams/
+    └── deployment-proofs/
+        ├── 01-ec2-backed/
+        └── 02-fargate-backed/
+```
