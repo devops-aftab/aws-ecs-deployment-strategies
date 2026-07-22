@@ -60,6 +60,8 @@ aws-ecs-deployment-strategies/
 * **AWS CLI** configured with administrative credentials.
 * An active AWS Account.
 
+> **Production Architecture Note:** This lab utilizes local Terraform state (`terraform.tfstate`) for isolated local demonstration. In a production environment, remote state management should be configured using an **AWS S3 Backend** paired with a **DynamoDB table** for state locking and concurrency protection.
+
 ### Deployment Workflow
 
 To deploy either infrastructure stack, change directories into the target folder and execute standard Terraform lifecycle commands:
