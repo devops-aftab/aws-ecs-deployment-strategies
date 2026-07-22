@@ -4,7 +4,7 @@ This component of the portfolio demonstrates how to deploy a containerized web a
 
 ##  Architectural Overview
 
-![Fargate Architecture](../images/Infra%20Diagrams/fargate-ecs-architecture.png)
+![Fargate Architecture](../images/infra-diagrams/fargate-ecs-architecture.png)
 
 The infrastructure is built entirely from scratch using Terraform and consists of the following components:
 
@@ -52,7 +52,7 @@ Verified the cluster operates completely serverless (**0 EC2 instances**) with 2
 ### 3. Application Load Balancer Verification
 Tested traffic distribution across private Fargate tasks running across distinct subnets (`10.0.1.x` and `10.0.2.x`):
 
-![Request Flow](../images/Infra%20Diagrams/fargate_backed_request_flow.png)
+![Request Flow](../images/infra-diagrams/fargate_backed_request_flow.png)
 
 | Fargate Task 1 (Subnet A) | Fargate Task 2 (Subnet B) |
 | :---: | :---: |

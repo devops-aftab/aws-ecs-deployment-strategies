@@ -4,7 +4,7 @@ This repository provisions a highly available, load-balanced Amazon ECS (Elastic
 
 ##  Architecture Overview
 
-![EC2-Backed ECS Architecture](../images/Infra%20Diagrams/ec2-ecs-architecture.png)
+![EC2-Backed ECS Architecture](../images/infra-diagrams/ec2-ecs-architecture.png)
 
 The configuration deploys a complete, secure infrastructure stack that includes:
 
@@ -65,7 +65,7 @@ The EC2 launch configuration utilizes a `name_prefix` and a `create_before_destr
 
 #### 3. ALB Load Balancing Test
 
-![Request Flow](../images/Infra%20Diagrams/ec2_backed_request_flow.png)
+![Request Flow](../images/infra-diagrams/ec2_backed_request_flow.png)
 
 | Task 1 Response | Task 2 Response |
 | :---: | :---: |
