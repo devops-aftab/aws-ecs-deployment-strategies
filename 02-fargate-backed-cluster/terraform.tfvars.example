@@ -1,0 +1,12 @@
+# ==========================================
+# AWS Fargate Deployment Variables (Template)
+# Copy this file to 'terraform.tfvars' and customize your values
+# ==========================================
+
+# Target AWS Region
+aws_region = "ap-south-1"
+
+# Networking Configuration
+vpc_cidr             = "10.0.0.0/16"
+public_subnet_a_cidr = "10.0.1.0/24"
+public_subnet_b_cidr = "10.0.2.0/24"

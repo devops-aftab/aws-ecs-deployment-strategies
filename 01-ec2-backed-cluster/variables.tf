@@ -24,6 +24,6 @@ variable "public_subnet_b_cidr" {
 
 variable "instance_type" {
   type        = string
-  default     = "t2.micro"
-  description = "EC2 host instance size"
+  default     = "t3.micro" # Updated default to t3.micro for modern nitro-based EC2 performance
+  description = "EC2 host instance size for the Auto Scaling Group"
 }
