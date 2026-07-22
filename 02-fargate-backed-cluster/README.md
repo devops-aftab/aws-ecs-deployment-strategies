@@ -33,3 +33,23 @@ When transitioning a workload from EC2-backed ECS to Fargate, the structural app
 ├── variables.tf     # Configurable inputs (AWS Region, CIDR blocks)
 ├── outputs.tf       # Resulting endpoints (Public ALB URL)
 └── provider.tf      # Terraform core and AWS provider version locks
+```
+
+### 1. Terraform Infrastructure Provisioning
+Executed serverless ECS infrastructure provisioning creating 18 AWS resources (VPC, Subnets, ALB, Target Groups, and Fargate ECS Cluster).
+
+![Terraform Apply Output](../images/deployment-proofs/02-fargate-backed/fargate-terraform-apply.png)
+
+### 2. Serverless Cluster & Service Health
+Verified the cluster operates completely serverless (**0 EC2 instances**) with 2 active Fargate tasks mapped to a healthy ALB target group.
+
+| Serverless Cluster State | Target Group & Service Health |
+| :---: | :---: |
+| ![Cluster Console](../images/deployment-proofs/02-fargate-backed/fargate-ecs-cluster-console.png) | ![Service Health](../images/deployment-proofs/02-fargate-backed/fargate-ecs-service-status.png) |
+
+### 3. Application Load Balancer Verification
+Tested traffic distribution across private Fargate tasks running across distinct subnets (`10.0.1.x` and `10.0.2.x`):
+
+| Fargate Task 1 (Subnet A) | Fargate Task 2 (Subnet B) |
+| :---: | :---: |
+| ![Task 1](../images/deployment-proofs/02-fargate-backed/alb-load-balancing-task-1.png) | ![Task 2](../images/deployment-proofs/02-fargate-backed/alb-load-balancing-task-2.png) |

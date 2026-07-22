@@ -52,3 +52,15 @@ The EC2 launch configuration utilizes a `name_prefix` and a `create_before_destr
    terraform plan
    terraform apply
    
+### Deployment Verification
+
+#### 1. Terraform Deployment Output
+![Terraform Apply Output](../images/deployment-proofs/01-ec2-backed/ec2-terraform-apply.png)
+
+#### 2. Service & Task Status
+![ECS Service Status](../images/deployment-proofs/01-ec2-backed/ec2-ecs-service-status.png)
+
+#### 3. ALB Load Balancing Test
+| Task 1 Response | Task 2 Response |
+| :---: | :---: |
+| ![Task 1](../images/deployment-proofs/01-ec2-backed/alb-load-balancing-task-1.png) | ![Task 2](../images/deployment-proofs/01-ec2-backed/alb-load-balancing-task-2.png) |
