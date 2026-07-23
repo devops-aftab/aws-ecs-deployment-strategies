@@ -1,6 +1,5 @@
 # ==========================================
 # AWS EC2-Backed ECS Cluster Variables (Template)
-# Copy this file to 'terraform.tfvars' and customize your values
 # ==========================================
 
 # Target AWS Region

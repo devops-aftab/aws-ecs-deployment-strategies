@@ -1,6 +1,5 @@
 # ==========================================
 # AWS Fargate Deployment Variables (Template)
-# Copy this file to 'terraform.tfvars' and customize your values
 # ==========================================
 
 # Target AWS Region
