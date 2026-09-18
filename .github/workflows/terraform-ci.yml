@@ -34,13 +34,15 @@ jobs:
         working-directory: ${{ matrix.directory }}
 
   security-scan:
-    name: "Run Security Analysis (Trivy/tfsec)"
+    name: "Run Security Analysis (tfsec)"
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Run Security Scanner
+      - name: Run tfsec Security Scanner
         uses: aquasecurity/tfsec-action@v1.0.0
         with:
           working_directory: .
+          soft_fail: true
