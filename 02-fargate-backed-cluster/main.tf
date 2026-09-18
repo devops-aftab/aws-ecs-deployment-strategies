@@ -175,8 +175,8 @@ resource "aws_ecs_task_definition" "web_task" {
   family                   = "ecs-fargate-web-app-task"
   network_mode             = "awsvpc" # Mandatory for Fargate configurations
   requires_compatibilities = ["FARGATE"]
-  cpu                      = "256"    # Explicitly declared at the task level for Fargate
-  memory                   = "512"    # Explicitly declared at the task level for Fargate
+  cpu                      = "256" # Explicitly declared at the task level for Fargate
+  memory                   = "512" # Explicitly declared at the task level for Fargate
   execution_role_arn       = aws_iam_role.ecs_execution_role.arn
 
   container_definitions = jsonencode([

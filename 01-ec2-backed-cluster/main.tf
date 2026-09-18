@@ -162,7 +162,7 @@ resource "aws_iam_role_policy_attachment" "ecs_instance_policy" {
 
 # 3. Create the "lanyard" so EC2 can wear the badge
 resource "aws_iam_instance_profile" "ecs_instance_profile" {
-  name = "ecs-instance-profile" 
+  name = "ecs-instance-profile"
   role = aws_iam_role.ecs_instance_role.name
 }
 
@@ -228,8 +228,8 @@ resource "aws_autoscaling_group" "ecs_asg" {
     version = "$Latest"
   }
 
-  min_size     = 1
-  max_size     = 3
+  min_size         = 1
+  max_size         = 3
   desired_capacity = 2 # Starts 2 EC2 instances to demonstrate multi-AZ load balancing
 
   tag {
