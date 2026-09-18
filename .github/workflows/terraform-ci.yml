@@ -1,0 +1,46 @@
+name: "Terraform Quality & Security Checks"
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  validate:
+    name: "Lint and Validate Terraform"
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        directory: ['./01-ec2-backed-cluster', './02-fargate-backed-cluster']
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.5.0
+
+      - name: Check Format
+        run: terraform fmt -check
+        working-directory: ${{ matrix.directory }}
+
+      - name: Validate Syntax
+        run: |
+          terraform init -backend=false
+          terraform validate
+        working-directory: ${{ matrix.directory }}
+
+  security-scan:
+    name: "Run Security Analysis (Trivy/tfsec)"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Run Security Scanner
+        uses: aquasecurity/tfsec-action@v1.0.0
+        with:
+          working_directory: .
