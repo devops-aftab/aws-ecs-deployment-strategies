@@ -12,7 +12,7 @@ The configuration deploys a complete, secure infrastructure stack that includes:
 2. **Security**: Separated Security Groups ensuring that the public internet can only access the Application Load Balancer (ALB) on port 80, and the EC2 instances only accept traffic routed directly from the ALB.
 3. **Load Balancing**: An Application Load Balancer configured with dynamic target group tracking to handle inbound web traffic.
 4. **Compute & Auto Scaling**: An Auto Scaling Group (ASG) utilizing a Launch Template that dynamically fetches the latest official AWS ECS-optimized Amazon Linux 2 AMI.
-5. **Container Orchestration**: An ECS Cluster orchestrating an NGINX demo application utilizing **Dynamic Host Port Mapping** and Docker `bridge` networking.
+5. **Container Orchestration**: An ECS Cluster orchestrating an NGINX demo application utilizing **Dynamic Host Port Mapping** & Docker `bridge` networking.
 
 ---
 
